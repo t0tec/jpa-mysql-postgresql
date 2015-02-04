@@ -2,13 +2,13 @@ package org.t0tec.tutorials.jmp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.t0tec.tutorials.jmp.persistence.CustomPersistence;
 
 import java.util.GregorianCalendar;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
 /**
  * @author t0tec (t0tec.olmec@gmail.com)
@@ -24,8 +24,8 @@ public class Main {
   private static EntityManagerFactory emfPostgresql;
 
   public static void main(String[] args) {
-    emfMysql = Persistence.createEntityManagerFactory("jpa-mysql");
-    emfPostgresql = Persistence.createEntityManagerFactory("jpa-postgresql");
+    emfMysql = CustomPersistence.createEntityManagerFactory("jpa-mysql");
+    emfPostgresql = CustomPersistence.createEntityManagerFactory("jpa-postgresql");
 
     Main main = new Main();
     main.startPostgresql();

@@ -4,9 +4,9 @@
 	http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 	<persistence-unit name="jpa-mysql">
-
 		<!-- The provider only needs to be set if you use several JPA providers -->
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+        
 		<!-- This is required to be spec compliant, Hibernate however supports
 			auto-detection even in JSE. <class>org.t0tec.tutorials.jmp.Driver</class> -->
 
@@ -38,10 +38,6 @@
 	</persistence-unit>
 
     <persistence-unit name="jpa-postgresql">
-
-        <!-- The provider only needs to be set if you use several JPA providers -->
-        <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
-
         <!-- This is required to be spec compliant, Hibernate however supports
             auto-detection even in JSE. <class>org.t0tec.tutorials.jmp.Driver</class> -->
 
