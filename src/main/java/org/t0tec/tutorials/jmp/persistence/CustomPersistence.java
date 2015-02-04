@@ -11,6 +11,11 @@ import javax.persistence.PersistenceException;
 import javax.persistence.spi.PersistenceProvider;
 import javax.persistence.spi.PersistenceProviderResolverHolder;
 
+/**
+ * @author t0tec (t0tec.olmec@gmail.com)
+ * @version $Id$
+ * @since 1.0
+ */
 @SuppressWarnings({"deprecation", "rawtypes"})
 public class CustomPersistence extends Persistence {
 

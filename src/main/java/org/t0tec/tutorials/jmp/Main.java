@@ -2,6 +2,8 @@ package org.t0tec.tutorials.jmp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.t0tec.tutorials.jmp.model.Driver;
+import org.t0tec.tutorials.jmp.model.Gender;
 import org.t0tec.tutorials.jmp.persistence.CustomPersistence;
 
 import java.util.GregorianCalendar;
@@ -28,8 +30,10 @@ public class Main {
     emfPostgresql = CustomPersistence.createEntityManagerFactory("jpa-postgresql");
 
     Main main = new Main();
+
     main.startPostgresql();
     main.startMysql();
+
     main.getDriverAndCompare();
 
     emfMysql.close();

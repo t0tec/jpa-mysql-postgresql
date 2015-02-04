@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.jmp;
+package org.t0tec.tutorials.jmp.model;
 
 import org.hibernate.annotations.Type;
 
@@ -42,14 +42,14 @@ public class Driver implements Serializable {
   @Column(name = "surname", nullable = false)
   private String surname;
 
-  @Column(name = "birthdate")
   @Temporal(TemporalType.DATE)
+  @Column(name = "birthdate")
   private Date birthdate;
 
   @Column(name = "nationality")
   private String nationality;
 
-  @Type(type = "org.t0tec.tutorials.jmp.GenderUserType")
+  @Type(type = "org.t0tec.tutorials.jmp.persistence.GenderUserType")
   @Column(name = "gender")
   private Gender gender;
 

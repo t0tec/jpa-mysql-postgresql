@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.jmp;
+package org.t0tec.tutorials.jmp.model;
 
 import org.t0tec.tutorials.jmp.persistence.PersistentEnum;
 

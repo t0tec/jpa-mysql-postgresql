@@ -1,4 +1,4 @@
-package org.t0tec.tutorials.jmp;
+package org.t0tec.tutorials.jmp.model;
 
 import java.io.Serializable;
 
@@ -25,6 +25,9 @@ public class Constructor implements Serializable {
   @Column(name = "reference_name", nullable = false)
   private String referenceName;
 
+  @Column(name = "name", nullable = false, unique = true)
+  private String name;
+
   @Column(name = "country")
   private String country;
 
@@ -37,8 +40,9 @@ public class Constructor implements Serializable {
   public Constructor() {
   }
 
-  public Constructor(String referenceName, String country, String base, String url) {
+  public Constructor(String referenceName, String name, String country, String base, String url) {
     this.referenceName = referenceName;
+    this.name = name;
     this.country = country;
     this.base = base;
     this.url = url;
@@ -50,6 +54,10 @@ public class Constructor implements Serializable {
 
   public String getReferenceName() {
     return this.referenceName;
+  }
+
+  public String getName() {
+    return this.name;
   }
 
   public String getCountry() {

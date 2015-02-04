@@ -6,9 +6,9 @@
 	<persistence-unit name="jpa-mysql">
 		<!-- The provider only needs to be set if you use several JPA providers -->
         <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
-        
+
 		<!-- This is required to be spec compliant, Hibernate however supports
-			auto-detection even in JSE. <class>org.t0tec.tutorials.jmp.Driver</class> -->
+			auto-detection even in JSE. <class>org.t0tec.tutorials.jmp.model.Driver</class> -->
 
 		<properties>
 			<!-- Scan for annotated classes and Hibernate mapping XML files -->
@@ -39,7 +39,7 @@
 
     <persistence-unit name="jpa-postgresql">
         <!-- This is required to be spec compliant, Hibernate however supports
-            auto-detection even in JSE. <class>org.t0tec.tutorials.jmp.Driver</class> -->
+            auto-detection even in JSE. <class>org.t0tec.tutorials.jmp.model.Driver</class> -->
 
         <properties>
             <!-- Scan for annotated classes and Hibernate mapping XML files -->
