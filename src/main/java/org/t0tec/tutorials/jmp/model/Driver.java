@@ -62,6 +62,9 @@ public class Driver implements Serializable {
   @OneToMany(mappedBy = "driver")
   private Set<LapTime> lapTimes = new HashSet<LapTime>();
 
+  @OneToMany(mappedBy = "driver")
+  private Set<PitStop> pitStops = new HashSet<PitStop>();
+
   public Driver() {
   }
 

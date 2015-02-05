@@ -15,8 +15,8 @@ import javax.persistence.Table;
  * @since 1.0
  */
 @Entity
-@Table(name = "lap_time")
-public class LapTime implements Serializable {
+@Table(name = "pit_stop")
+public class PitStop implements Serializable {
 
   @Id
   @ManyToOne
@@ -29,44 +29,24 @@ public class LapTime implements Serializable {
   private Driver driver;
 
   @Id
+  @Column(name = "stop")
+  private int stop;
+
   @Column(name = "lap")
   private int lap;
 
-  @Column(name = "position")
-  private int position;
+  @Column(name = "duration")
+  private int duration;
 
-  @Column(name = "time")
-  private int time;
-
-  public LapTime() {
+  public PitStop() {
   }
 
-  public LapTime(Race race, Driver driver, int lap, int position, int time) {
+  public PitStop(Race race, Driver driver, int stop, int lap, int duration) {
     this.race = race;
     this.driver = driver;
+    this.stop = stop;
     this.lap = lap;
-    this.position = position;
-    this.time = time;
-  }
-
-  public Race getRace() {
-    return this.race;
-  }
-
-  public Driver getDriver() {
-    return this.driver;
-  }
-
-  public int getLap() {
-    return this.lap;
-  }
-
-  public int getPosition() {
-    return this.position;
-  }
-
-  public int getTime() {
-    return this.time;
+    this.duration = duration;
   }
 
   @Override
@@ -78,9 +58,9 @@ public class LapTime implements Serializable {
       return false;
     }
 
-    LapTime that = (LapTime) o;
+    PitStop that = (PitStop) o;
 
-    if (this.lap != that.lap) {
+    if (this.stop != that.stop) {
       return false;
     }
     if (!this.driver.equals(that.driver)) {
@@ -97,7 +77,7 @@ public class LapTime implements Serializable {
   public int hashCode() {
     int result = this.race.hashCode();
     result = 31 * result + this.driver.hashCode();
-    result = 31 * result + this.lap;
+    result = 31 * result + this.stop;
     return result;
   }
 }
