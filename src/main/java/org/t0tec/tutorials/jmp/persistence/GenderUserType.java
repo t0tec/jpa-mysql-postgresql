@@ -7,7 +7,7 @@ import org.t0tec.tutorials.jmp.model.Gender;
  * @version $Id$
  * @since 1.0
  */
-public class GenderUserType extends PersistentEnumUserType<Gender> {
+public class GenderUserType extends PersistentGenderEnumUserType<Gender> {
 
   @Override
   public Class<Gender> returnedClass() {

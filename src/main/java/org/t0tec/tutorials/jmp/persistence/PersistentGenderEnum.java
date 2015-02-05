@@ -5,7 +5,7 @@ package org.t0tec.tutorials.jmp.persistence;
  * @version $Id$
  * @since 1.0
  */
-public interface PersistentEnum {
+public interface PersistentGenderEnum {
 
   Character getId();
 }

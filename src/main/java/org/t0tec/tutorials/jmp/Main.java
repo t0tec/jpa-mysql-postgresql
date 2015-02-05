@@ -6,7 +6,9 @@ import org.t0tec.tutorials.jmp.model.Circuit;
 import org.t0tec.tutorials.jmp.model.Driver;
 import org.t0tec.tutorials.jmp.model.Gender;
 import org.t0tec.tutorials.jmp.model.Race;
+import org.t0tec.tutorials.jmp.model.Result;
 import org.t0tec.tutorials.jmp.model.Season;
+import org.t0tec.tutorials.jmp.model.Status;
 import org.t0tec.tutorials.jmp.persistence.CustomPersistence;
 
 import java.util.GregorianCalendar;
@@ -38,6 +40,7 @@ public class Main {
     main.startPostgresql();
     main.getDriverAndCompare();
     main.createRace();
+    main.createResult();
 
     emfMysql.close();
     emfPostgresql.close();
@@ -171,5 +174,19 @@ public class Main {
 
     postgresqlTx.commit();
     emPostgresql.close();
+  }
+
+  private void createResult() {
+    Result result = new Result();
+    result.setStatus(Status.ACCIDENT);
+
+        EntityManager emMysql = emfMysql.createEntityManager();
+    EntityTransaction mysqlTx = emMysql.getTransaction();
+    mysqlTx.begin();
+
+    emMysql.persist(result);
+
+    mysqlTx.commit();
+    emMysql.close();
   }
 }

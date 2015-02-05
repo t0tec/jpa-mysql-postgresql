@@ -1,6 +1,6 @@
 package org.t0tec.tutorials.jmp.model;
 
-import org.t0tec.tutorials.jmp.persistence.PersistentEnum;
+import org.t0tec.tutorials.jmp.persistence.PersistentGenderEnum;
 
 /**
  *
@@ -8,7 +8,7 @@ import org.t0tec.tutorials.jmp.persistence.PersistentEnum;
  * @version $Id$
  * @since 1.0
  */
-public enum Gender implements PersistentEnum {
+public enum Gender implements PersistentGenderEnum {
   MALE('M'),
   FEMALE('F');
 

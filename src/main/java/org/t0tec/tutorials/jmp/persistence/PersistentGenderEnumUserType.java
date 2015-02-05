@@ -15,7 +15,17 @@ import java.sql.Types;
  * @version $Id$
  * @since 1.0
  */
-public abstract class PersistentEnumUserType<T extends PersistentEnum> implements UserType {
+public abstract class PersistentGenderEnumUserType<T extends PersistentGenderEnum>
+    implements UserType {
+
+
+  @Override
+  public abstract Class<T> returnedClass();
+
+  @Override
+  public int[] sqlTypes() {
+    return new int[]{Types.CHAR};
+  }
 
   @Override
   public Object assemble(Serializable cached, Object owner)
@@ -56,7 +66,7 @@ public abstract class PersistentEnumUserType<T extends PersistentEnum> implement
     if (resultSet.wasNull()) {
       return null;
     }
-    for (PersistentEnum value : returnedClass().getEnumConstants()) {
+    for (PersistentGenderEnum value : returnedClass().getEnumConstants()) {
       if (id.equals(value.getId())) {
         return value;
       }
@@ -71,7 +81,7 @@ public abstract class PersistentEnumUserType<T extends PersistentEnum> implement
     if (value == null) {
       preparedStatement.setNull(i, Types.CHAR);
     } else {
-      preparedStatement.setString(i, String.valueOf(((PersistentEnum) value).getId()));
+      preparedStatement.setString(i, String.valueOf(((PersistentGenderEnum) value).getId()));
     }
   }
 
@@ -79,14 +89,6 @@ public abstract class PersistentEnumUserType<T extends PersistentEnum> implement
   public Object replace(Object original, Object target, Object owner)
       throws HibernateException {
     return original;
-  }
-
-  @Override
-  public abstract Class<T> returnedClass();
-
-  @Override
-  public int[] sqlTypes() {
-    return new int[]{Types.CHAR};
   }
 
 }

@@ -33,7 +33,7 @@ public class ConstructorStandings implements Serializable {
   private Constructor constructor;
 
   @Column(name = "points", nullable = false)
-  private int points;
+  private double points;
 
   @Column(name = "position")
   private int position;
@@ -44,7 +44,7 @@ public class ConstructorStandings implements Serializable {
   public ConstructorStandings() {
   }
 
-  public ConstructorStandings(Race race, Constructor constructor, int points, int position,
+  public ConstructorStandings(Race race, Constructor constructor, double points, int position,
                               int wins) {
     this.race = race;
     this.constructor = constructor;
@@ -65,7 +65,7 @@ public class ConstructorStandings implements Serializable {
     return this.constructor;
   }
 
-  public int getPoints() {
+  public double getPoints() {
     return this.points;
   }
 

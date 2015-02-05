@@ -33,7 +33,7 @@ public class DriverStandings implements Serializable {
   private Driver driver;
 
   @Column(name = "points", nullable = false)
-  private int points;
+  private double points;
 
   @Column(name = "position")
   private int position;
@@ -44,7 +44,7 @@ public class DriverStandings implements Serializable {
   public DriverStandings() {
   }
 
-  public DriverStandings(Race race, Driver driver, int points, int position, int wins) {
+  public DriverStandings(Race race, Driver driver, double points, int position, int wins) {
     this.race = race;
     this.driver = driver;
     this.points = points;
@@ -64,7 +64,7 @@ public class DriverStandings implements Serializable {
     return this.driver;
   }
 
-  public int getPoints() {
+  public double getPoints() {
     return this.points;
   }
 
