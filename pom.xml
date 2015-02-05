@@ -137,7 +137,7 @@
                                         <path location="${project.build.directory}/classes" />
                                     </classpath>
                                     <configuration
-                                            configurationfile="${project.build.directory}/classes/hibernate.cfg.xml" />
+                                            configurationfile="${project.build.directory}/classes/META-INF/persistence.xml" />
                                     <hbm2ddl export="true" drop="true" create="true"
                                              outputfilename="helloworld.ddl" format="true" />
                                 </hibernatetool>
