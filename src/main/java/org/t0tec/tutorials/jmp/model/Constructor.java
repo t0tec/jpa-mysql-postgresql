@@ -1,11 +1,14 @@
 package org.t0tec.tutorials.jmp.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -36,6 +39,12 @@ public class Constructor implements Serializable {
 
   @Column(name = "url", length = 500)
   private String url;
+
+  @OneToMany(mappedBy = "constructor")
+  private Set<Qualifying> qualifying = new HashSet<Qualifying>();
+
+  @OneToMany(mappedBy = "constructor")
+  private Set<ConstructorStandings> constructorStandings = new HashSet<ConstructorStandings>();
 
   public Constructor() {
   }

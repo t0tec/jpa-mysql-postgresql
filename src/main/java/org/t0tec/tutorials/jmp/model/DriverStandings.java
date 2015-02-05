@@ -1,16 +1,14 @@
 package org.t0tec.tutorials.jmp.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * @author t0tec (t0tec.olmec@gmail.com)
@@ -18,42 +16,64 @@ import javax.persistence.TemporalType;
  * @since 1.0
  */
 @Entity
-@Table(name = "pit_stop")
-public class PitStop implements Serializable {
+@Table(name = "driver_standings")
+public class DriverStandings implements Serializable {
 
   @Id
+  @GeneratedValue
+  @Column(name = "id")
+  private long id;
+
   @ManyToOne
   @JoinColumn(name = "race_id", referencedColumnName = "id", nullable = false)
   private Race race;
 
-  @Id
   @ManyToOne
   @JoinColumn(name = "driver_id", referencedColumnName = "id", nullable = false)
   private Driver driver;
 
-  @Id
-  @Column(name = "stop")
-  private int stop;
+  @Column(name = "points", nullable = false)
+  private int points;
 
-  @Column(name = "lap")
-  private int lap;
+  @Column(name = "position")
+  private int position;
 
-  @Temporal(TemporalType.TIME)
-  @Column(name = "time")
-  private Date time;
+  @Column(name = "wins", nullable = false)
+  private int wins;
 
-  @Column(name = "duration")
-  private int duration;
-
-  public PitStop() {
+  public DriverStandings() {
   }
 
-  public PitStop(Race race, Driver driver, int stop, int lap, int duration) {
+  public DriverStandings(Race race, Driver driver, int points, int position, int wins) {
     this.race = race;
     this.driver = driver;
-    this.stop = stop;
-    this.lap = lap;
-    this.duration = duration;
+    this.points = points;
+    this.position = position;
+    this.wins = wins;
+  }
+
+  public long getId() {
+    return this.id;
+  }
+
+  public Race getRace() {
+    return this.race;
+  }
+
+  public Driver getDriver() {
+    return this.driver;
+  }
+
+  public int getPoints() {
+    return this.points;
+  }
+
+  public int getPosition() {
+    return this.position;
+  }
+
+  public int getWins() {
+    return this.wins;
   }
 
   @Override
@@ -65,11 +85,8 @@ public class PitStop implements Serializable {
       return false;
     }
 
-    PitStop that = (PitStop) o;
+    DriverStandings that = (DriverStandings) o;
 
-    if (this.stop != that.stop) {
-      return false;
-    }
     if (!this.driver.equals(that.driver)) {
       return false;
     }
@@ -84,7 +101,6 @@ public class PitStop implements Serializable {
   public int hashCode() {
     int result = this.race.hashCode();
     result = 31 * result + this.driver.hashCode();
-    result = 31 * result + this.stop;
     return result;
   }
 }
