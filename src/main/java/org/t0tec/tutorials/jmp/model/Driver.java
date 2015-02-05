@@ -27,7 +27,7 @@ public class Driver implements Serializable {
   @Column(name = "id")
   private long id;
 
-  @Column(name = "reference_name", nullable = false)
+  @Column(name = "reference_name", nullable = false, unique = true)
   private String referenceName;
 
   @Column(name = "number")

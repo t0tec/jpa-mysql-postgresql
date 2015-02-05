@@ -2,8 +2,11 @@ package org.t0tec.tutorials.jmp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.t0tec.tutorials.jmp.model.Circuit;
 import org.t0tec.tutorials.jmp.model.Driver;
 import org.t0tec.tutorials.jmp.model.Gender;
+import org.t0tec.tutorials.jmp.model.Race;
+import org.t0tec.tutorials.jmp.model.Season;
 import org.t0tec.tutorials.jmp.persistence.CustomPersistence;
 
 import java.util.GregorianCalendar;
@@ -31,17 +34,17 @@ public class Main {
 
     Main main = new Main();
 
-    main.startPostgresql();
     main.startMysql();
-
+    main.startPostgresql();
     main.getDriverAndCompare();
+    main.createRace();
 
     emfMysql.close();
     emfPostgresql.close();
   }
 
-  private void startPostgresql() {
-    EntityManager em = emfPostgresql.createEntityManager();
+  private void startMysql() {
+    EntityManager em = emfMysql.createEntityManager();
     EntityTransaction tx = em.getTransaction();
     tx.begin();
 
@@ -69,8 +72,8 @@ public class Main {
     em.close();
   }
 
-  private void startMysql() {
-    EntityManager em = emfMysql.createEntityManager();
+  private void startPostgresql() {
+    EntityManager em = emfPostgresql.createEntityManager();
     EntityTransaction tx = em.getTransaction();
     tx.begin();
 
@@ -108,7 +111,6 @@ public class Main {
     postgresqlTx.commit();
     emPostgresql.close();
 
-
     EntityManager emMysql = emfMysql.createEntityManager();
     EntityTransaction mysqlTx = emMysql.getTransaction();
     mysqlTx.begin();
@@ -121,5 +123,53 @@ public class Main {
     logger.info("Equals: {}", hamiltonP.equals(hamiltonM));
   }
 
+  private void createRace() {
 
+    Season season = new Season(2015, "wiki_2015_season");
+
+    Circuit circuit =
+        new Circuit("Melbourne", "Melbourne Grand Prix Circuit", "Albert Park", "Australia",
+                    -37.849722,
+                    144.968333, 5.303, 16,
+                    "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit");
+
+    GregorianCalendar date = new GregorianCalendar();
+    date.setLenient(false);
+    date.set(2015, 2, 15);
+
+    GregorianCalendar time = new GregorianCalendar();
+    time.set(GregorianCalendar.HOUR_OF_DAY, 16);
+    time.set(GregorianCalendar.MINUTE, 00);
+    time.set(GregorianCalendar.SECOND, 00);
+
+    Race race =
+        new Race(season, circuit, 1, "Australian Grand Prix", date.getTime(), time.getTime(),
+                 "wiki_melbourne_race_2015");
+
+//    EntityManager emMysql = emfMysql.createEntityManager();
+//    EntityTransaction mysqlTx = emMysql.getTransaction();
+//    mysqlTx.begin();
+//
+//    emMysql.merge(season);
+//
+//    emMysql.merge(circuit);
+//
+//    emMysql.merge(race);
+//
+//    mysqlTx.commit();
+//    emMysql.close();
+
+    EntityManager emPostgresql = emfPostgresql.createEntityManager();
+    EntityTransaction postgresqlTx = emPostgresql.getTransaction();
+    postgresqlTx.begin();
+
+    emPostgresql.persist(season);
+
+    emPostgresql.persist(circuit);
+
+    emPostgresql.persist(race);
+
+    postgresqlTx.commit();
+    emPostgresql.close();
+  }
 }

@@ -22,7 +22,7 @@ public class Circuit implements Serializable {
   @Column(name = "id")
   private long id;
 
-  @Column(name = "reference_name", nullable = false)
+  @Column(name = "reference_name", nullable = false, unique = true)
   private String referenceName;
 
   @Column(name = "name", nullable = false)
@@ -44,7 +44,7 @@ public class Circuit implements Serializable {
   private double length;
 
   @Column(name = "turns", columnDefinition = "smallint")
-  private short turns;
+  private int turns;
 
   @Column(name = "url", length = 500)
   private String url;
@@ -52,8 +52,9 @@ public class Circuit implements Serializable {
   public Circuit() {
   }
 
-  public Circuit(String referenceName, String name, String location, String country, double latitude,
-                 double longitude, double length, short turns, String url) {
+  public Circuit(String referenceName, String name, String location, String country,
+                 double latitude,
+                 double longitude, double length, int turns, String url) {
     this.referenceName = referenceName;
     this.name = name;
     this.location = location;
@@ -97,7 +98,7 @@ public class Circuit implements Serializable {
     return this.length;
   }
 
-  public short getTurns() {
+  public int getTurns() {
     return this.turns;
   }
 
