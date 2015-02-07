@@ -10,6 +10,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -60,15 +62,66 @@ public class Result {
   @Column(name = "average_speed", columnDefinition = "decimal(5,2)")
   private double averageSpeed;
 
-  @Enumerated(EnumType.ORDINAL)
-  @Column(name = "status_id")
+  @OneToOne
+  @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
   private Status status;
 
   public Result() {
   }
 
+  public long getId() {
+    return this.id;
+  }
+
+  public int getDriverNumber() {
+    return this.driverNumber;
+  }
+
+  public Integer getGridPosition() {
+    return this.gridPosition;
+  }
+
+  public Integer getPosition() {
+    return this.position;
+  }
+
+  public int getPositionOrder() {
+    return this.positionOrder;
+  }
+
+  public double getPoints() {
+    return this.points;
+  }
+
+  public int getLaps() {
+    return this.laps;
+  }
+
+  public int getRank() {
+    return this.rank;
+  }
+
+  public int getRaceTime() {
+    return this.raceTime;
+  }
+
+  public int getFastestLap() {
+    return this.fastestLap;
+  }
+
+  public int getFastestLapTime() {
+    return this.fastestLapTime;
+  }
+
+  public double getAverageSpeed() {
+    return this.averageSpeed;
+  }
+
+  public Status getStatus() {
+    return this.status;
+  }
+
   public void setStatus(Status status) {
     this.status = status;
   }
-
 }

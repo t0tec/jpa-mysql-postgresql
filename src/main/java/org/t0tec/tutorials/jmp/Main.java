@@ -9,6 +9,7 @@ import org.t0tec.tutorials.jmp.model.Race;
 import org.t0tec.tutorials.jmp.model.Result;
 import org.t0tec.tutorials.jmp.model.Season;
 import org.t0tec.tutorials.jmp.model.Status;
+import org.t0tec.tutorials.jmp.model.StatusType;
 import org.t0tec.tutorials.jmp.persistence.CustomPersistence;
 
 import java.util.GregorianCalendar;
@@ -149,40 +150,32 @@ public class Main {
         new Race(season, circuit, 1, "Australian Grand Prix", date.getTime(), time.getTime(),
                  "wiki_melbourne_race_2015");
 
-//    EntityManager emMysql = emfMysql.createEntityManager();
-//    EntityTransaction mysqlTx = emMysql.getTransaction();
-//    mysqlTx.begin();
-//
-//    emMysql.merge(season);
-//
-//    emMysql.merge(circuit);
-//
-//    emMysql.merge(race);
-//
-//    mysqlTx.commit();
-//    emMysql.close();
+    EntityManager emMysql = emfMysql.createEntityManager();
+    EntityTransaction mysqlTx = emMysql.getTransaction();
+    mysqlTx.begin();
 
-    EntityManager emPostgresql = emfPostgresql.createEntityManager();
-    EntityTransaction postgresqlTx = emPostgresql.getTransaction();
-    postgresqlTx.begin();
+    emMysql.persist(season);
 
-    emPostgresql.persist(season);
+    emMysql.persist(circuit);
 
-    emPostgresql.persist(circuit);
+    emMysql.persist(race);
 
-    emPostgresql.persist(race);
-
-    postgresqlTx.commit();
-    emPostgresql.close();
+    mysqlTx.commit();
+    emMysql.close();
   }
 
   private void createResult() {
     Result result = new Result();
-    result.setStatus(Status.ACCIDENT);
 
-        EntityManager emMysql = emfMysql.createEntityManager();
+    Status finished = new Status(StatusType.FINISHED);
+
+    EntityManager emMysql = emfMysql.createEntityManager();
     EntityTransaction mysqlTx = emMysql.getTransaction();
     mysqlTx.begin();
+
+    emMysql.persist(finished);
+
+    result.setStatus(finished);
 
     emMysql.persist(result);
 
