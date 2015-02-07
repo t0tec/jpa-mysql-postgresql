@@ -1,5 +1,7 @@
 package org.t0tec.tutorials.jmp.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "result")
-public class Result {
+public class Result implements Serializable {
 
   @Id
   @GeneratedValue
