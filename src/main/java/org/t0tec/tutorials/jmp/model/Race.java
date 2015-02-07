@@ -65,6 +65,9 @@ public class Race implements Serializable {
   private Set<Qualifying> qualifyings = new HashSet<Qualifying>();
 
   @OneToMany(mappedBy = "race")
+  private Set<Result> results = new HashSet<Result>();
+
+  @OneToMany(mappedBy = "race")
   private Set<DriverStandings> driverStandings = new HashSet<DriverStandings>();
 
   @OneToMany(mappedBy = "race")

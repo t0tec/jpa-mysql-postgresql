@@ -46,6 +46,9 @@ public class Constructor implements Serializable {
   @OneToMany(mappedBy = "constructor")
   private Set<ConstructorStandings> constructorStandings = new HashSet<ConstructorStandings>();
 
+  @OneToMany(mappedBy = "constructor")
+  private Set<Result> results = new HashSet<Result>();
+
   public Constructor() {
   }
 

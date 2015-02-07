@@ -69,6 +69,9 @@ public class Driver implements Serializable {
   private Set<Qualifying> qualifyings = new HashSet<Qualifying>();
 
   @OneToMany(mappedBy = "driver")
+  private Set<Result> results = new HashSet<Result>();
+
+  @OneToMany(mappedBy = "driver")
   private Set<DriverStandings> driverStandings = new HashSet<DriverStandings>();
 
   public Driver() {

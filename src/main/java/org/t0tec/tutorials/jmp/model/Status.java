@@ -25,7 +25,7 @@ public class Status implements Serializable {
   private long id;
 
   @Enumerated(EnumType.STRING)
-  @Column(name = "status")
+  @Column(name = "status", unique = true)
   private StatusType statusType;
 
   public Status() {

@@ -1,16 +1,11 @@
 package org.t0tec.tutorials.jmp.model;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -62,11 +57,44 @@ public class Result {
   @Column(name = "average_speed", columnDefinition = "decimal(5,2)")
   private double averageSpeed;
 
+  @ManyToOne
+  @JoinColumn(name = "race_id", referencedColumnName = "id", nullable = false)
+  private Race race;
+
+  @ManyToOne
+  @JoinColumn(name = "driver_id", referencedColumnName = "id", nullable = false)
+  private Driver driver;
+
+  @ManyToOne
+  @JoinColumn(name = "constructor_id", referencedColumnName = "id", nullable = false)
+  private Constructor constructor;
+
   @OneToOne
   @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
   private Status status;
 
   public Result() {
+  }
+
+  public Result(int driverNumber, Integer gridPosition, Integer position, int positionOrder,
+                double points, int laps, int rank, int raceTime, int fastestLap, int fastestLapTime,
+                double averageSpeed, Race race, Driver driver,
+                Constructor constructor, Status status) {
+    this.driverNumber = driverNumber;
+    this.gridPosition = gridPosition;
+    this.position = position;
+    this.positionOrder = positionOrder;
+    this.points = points;
+    this.laps = laps;
+    this.rank = rank;
+    this.raceTime = raceTime;
+    this.fastestLap = fastestLap;
+    this.fastestLapTime = fastestLapTime;
+    this.averageSpeed = averageSpeed;
+    this.race = race;
+    this.driver = driver;
+    this.constructor = constructor;
+    this.status = status;
   }
 
   public long getId() {
@@ -119,6 +147,18 @@ public class Result {
 
   public Status getStatus() {
     return this.status;
+  }
+
+  public Race getRace() {
+    return this.race;
+  }
+
+  public Driver getDriver() {
+    return this.driver;
+  }
+
+  public Constructor getConstructor() {
+    return this.constructor;
   }
 
   public void setStatus(Status status) {

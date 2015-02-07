@@ -174,6 +174,7 @@ public class Main {
     mysqlTx.begin();
 
     emMysql.persist(finished);
+    emMysql.persist(fakeFinished);
 
     result.setStatus(finished);
 
