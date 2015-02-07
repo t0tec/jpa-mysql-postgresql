@@ -164,4 +164,32 @@ public class Result {
   public void setStatus(Status status) {
     this.status = status;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || this.getClass() != o.getClass()) {
+      return false;
+    }
+
+    Result result = (Result) o;
+
+    if (!this.driver.equals(result.driver)) {
+      return false;
+    }
+    if (!this.race.equals(result.race)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = this.race.hashCode();
+    result = 31 * result + this.driver.hashCode();
+    return result;
+  }
 }
