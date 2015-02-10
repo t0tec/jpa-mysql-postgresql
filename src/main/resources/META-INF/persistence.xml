@@ -19,7 +19,7 @@
 			<property name="use_sql_comments" value="true" />
 
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/test" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/f1" />
             <property name="hibernate.connection.username" value="root" />
             <property name="hibernate.connection.password" value="root" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
@@ -29,7 +29,7 @@
             <property name="hibernate.hikari.minimumPoolSize" value="5" />
             <property name="hibernate.hikari.maximumPoolSize" value="20" />
             <property name="hibernate.hikari.idleTimeout" value="30000" />
-            <property name="hibernate.hikari.dataSource.url" value="jdbc:mysql://localhost:3306/test" />
+            <property name="hibernate.hikari.dataSource.url" value="jdbc:mysql://localhost:3306/f1" />
             <property name="hibernate.hikari.dataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" />
 
 			<!-- Drop and re-create the database schema on startup -->
@@ -50,7 +50,7 @@
             <property name="use_sql_comments" value="true" />
 
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/test" />
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/f1" />
             <property name="hibernate.connection.username" value="postgres" />
             <property name="hibernate.connection.password" value="postgres" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
@@ -60,7 +60,7 @@
             <property name="hibernate.hikari.minimumPoolSize" value="5" />
             <property name="hibernate.hikari.maximumPoolSize" value="20" />
             <property name="hibernate.hikari.idleTimeout" value="30000" />
-            <property name="hibernate.hikari.dataSource.url" value="jdbc:postgresql://localhost:5432/test" />
+            <property name="hibernate.hikari.dataSource.url" value="jdbc:postgresql://localhost:5432/f1" />
             <property name="hibernate.hikari.dataSourceClassName" value="org.postgresql.ds.PGSimpleDataSource" />
 
             <!-- Drop and re-create the database schema on startup -->
